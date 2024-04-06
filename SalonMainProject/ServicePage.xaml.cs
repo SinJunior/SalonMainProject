@@ -27,24 +27,48 @@ namespace SalonMainProject
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-            Manager.MainFrame.Navigate(new AddServicePage());
-
+            Manager.MainFrame.Navigate(new AddServicePage((sender as Button).DataContext as Service));
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            Manager.MainFrame.Navigate(new AddServicePage());
+            Manager.MainFrame.Navigate(new AddServicePage(null));
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-
+            var serviceRemove = dGridService.SelectedItems.Cast<Service>().ToList();
+            if (MessageBox.Show($"Вы точно хотите удалить следующие {serviceRemove.Count()} элементов?", "Внимание",
+                MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    salonEntities.GetContext().Service.RemoveRange(serviceRemove);
+                    salonEntities.GetContext().SaveChanges();
+                    MessageBox.Show("Данные удалены!");
+                    dGridService.ItemsSource = salonEntities.GetContext().Service.ToList();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString());
+                }
+            }
         }
 
         private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             if (Visibility != Visibility.Visible)
                 dGridService.ItemsSource = salonEntities.GetContext().Service.ToList();
+        }
+
+        private void textBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void comboBoxService_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

@@ -20,11 +20,15 @@ namespace SalonMainProject
     /// </summary>
     public partial class AddServicePage : Page
     {
-        //private Service service = new Service();
-        public AddServicePage()
+        private Service service = new Service();
+        public AddServicePage(Service selectService)
         {
             InitializeComponent();
-            //DataContext = service;
+
+            if (selectService != null)
+                service = selectService;
+
+            DataContext = service;
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
@@ -32,9 +36,9 @@ namespace SalonMainProject
             StringBuilder errors = new StringBuilder();
             if (string.IsNullOrWhiteSpace(service.Title))
                 errors.AppendLine("Название услуги не введено");
-            if (service.DerationSecond < 0)
+            if (service.DurationInSeconds < 0)
                 errors.AppendLine("Длительность не может быть отрицательной");
-            if (service.DerationSecond < 14400)
+            if (service.DurationInSeconds < 14400)
                 errors.AppendLine("Длительность не может быть более 4 часов");
 
             if (errors.Length > 0)
@@ -69,7 +73,7 @@ namespace SalonMainProject
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
             if (dlg.ShowDialog() == true && !string.IsNullOrWhiteSpace(dlg.FileName))
                 textFotoPath.Text = dlg.FileName.ToString();
-            textFotoPath.Focus();
+                textFotoPath.Focus();
         }
     }
 }

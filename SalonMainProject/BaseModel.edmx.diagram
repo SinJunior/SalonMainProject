@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3ceafc16144449a9a972c8ff8fddf600" Name="Diagram1">
+        <EntityTypeShape EntityType="salonModel.Client" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="salonModel.ClientService" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="salonModel.DocumentByService" Width="1.5" PointX="7.5" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="salonModel.Gender" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="salonModel.Manufacturer" Width="1.5" PointX="3" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="salonModel.Product" Width="1.5" PointX="5.25" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="salonModel.ProductPhoto" Width="1.5" PointX="7.5" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="salonModel.ProductSale" Width="1.5" PointX="7.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="salonModel.Service" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="salonModel.ServicePhoto" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="salonModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="7.125" IsExpanded="true" />
+        <AssociationConnector Association="salonModel.FK_Client_Gender" ManuallyRouted="false" />
+        <AssociationConnector Association="salonModel.FK_ClientService_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="salonModel.FK_ClientService_Service" ManuallyRouted="false" />
+        <AssociationConnector Association="salonModel.FK_DocumentByService_ClientService" ManuallyRouted="false" />
+        <AssociationConnector Association="salonModel.FK_ProductSale_ClientService" ManuallyRouted="false" />
+        <AssociationConnector Association="salonModel.FK_Product_Manufacturer" ManuallyRouted="false" />
+        <AssociationConnector Association="salonModel.FK_ProductPhoto_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="salonModel.FK_ProductSale_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="salonModel.FK_Service_ServicePhoto" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
